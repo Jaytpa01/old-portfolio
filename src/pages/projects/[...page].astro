@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths, GetStaticPathsOptions } from "astro";
+import { CollectionEntry, getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	const projects = await getCollection("project");
+	return paginate(projects, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Projects | Jay Parry">
+	{page.data.map((p: any) => <div>{JSON.stringify(p)}</div>)}
+</BaseLayout>
