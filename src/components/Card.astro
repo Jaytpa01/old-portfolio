@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import TestImage from "../assets/images/itemPreview.png";
+
+interface Props {
+	title: string;
+	content: string;
+	to: string;
+	image?: string;
+}
+
+const { title, content, to, image = "" } = Astro.props;
+---
+
+<div class="card w-96 lg:w-full lg:card-side bg-base-100 shadow-xl">
+	<figure>
+		<Image src={image} alt="Test Image" height="256" width="256" />
+	</figure>
+	<div class="card-body">
+		<h2 class="card-title">{title}</h2>
+		<p>{content}</p>
+		<div class="card-actions w-full">
+			<a class="btn btn-primary w-full" href={to}>Read More.</a>
+		</div>
+	</div>
+</div>
