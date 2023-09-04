@@ -1,19 +1,38 @@
 ---
+import Card from "../components/Card.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Jay Parry">
-	<div>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel dui tellus. In tincidunt a orci a consequat. Donec
-		nec ornare sem. Suspendisse lacinia, quam quis malesuada luctus, lorem ex finibus justo, porta posuere nulla lorem
-		sit amet leo. Mauris egestas lacus pulvinar, venenatis leo at, egestas ante. Aenean cursus lectus nec leo euismod,
-		et dignissim libero dignissim. Aliquam molestie accumsan nisi, et sollicitudin ipsum tincidunt ut. Proin vulputate
-		molestie velit. Curabitur semper viverra purus tincidunt ornare. Aenean sit amet malesuada eros. Pellentesque in
-		libero sed erat volutpat accumsan. Ut et facilisis purus, eu mattis felis. Pellentesque habitant morbi tristique
-		senectus et netus et malesuada fames ac turpis egestas. Etiam luctus aliquam commodo. Curabitur scelerisque lacus
-		non commodo luctus. Etiam porta rhoncus venenatis. Praesent luctus lectus et sodales condimentum. Nullam dolor nunc,
-		eleifend ut augue a, viverra sagittis turpis. Quisque nec tortor interdum, varius libero non, placerat lorem.
-		Praesent non nisl porttitor, posuere ex sit amet, malesuada risus. Mauris turpis nunc, congue quis iaculis quis,
-		volutpat at ipsum. Praesent pretium rutrum mauris sit amet tincidunt. Fusce eget cursus purus, et iaculis quam.
+	<div class="space-y-16">
+		<section>
+			<h1 class="text-3xl font-bold py-1">Hey there, I'm Jay!</h1>
+			<p class="text-3xl font-semibold pb-4">Fullstack Software Developer</p>
+
+			<div class="text-xl space-y-4">
+				<p>I was your typical nerd growing up, and naturally gravitated towards tech and software development.</p>
+				<p>
+					I find something intrinsically satisfying about being able to pull an idea out of my head and turn it into an
+					enjoyable, tangible and interactive experience; whether that be an Arduino-powered robot bumbling about or a
+					Discord bot for my friends and me.
+				</p>
+				<p>
+					I began studying a Bachelor of Mechatronics Engineering in 2020, which then lead me into Computer Science.
+					During my time studying, my passion for software development considerably grew encouraging me to pursue it
+					professionally.
+				</p>
+				<p>
+					I've since started working as a full-stack developer, working primarily on React applications with NodeJS
+					backends. When I get the chance, I also like to work on personal projects - building with technologies
+					including Golang, React (with Typescript of course), TailwindCSS, Astro and Postgres!
+				</p>
+			</div>
+		</section>
+
+		<section>
+			<div>
+				<h2 class="text-3xl lg:text-4xl w-full font-bold mb-2">My Latest Projects &lt;/&gt;</h2>
+			</div>
+		</section>
 	</div>
 </BaseLayout>
