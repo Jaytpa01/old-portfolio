@@ -9,8 +9,8 @@ interface Props {
 const { title, description = "Jay Parry's Developer Portfolio" } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -48,7 +48,9 @@ const { title, description = "Jay Parry's Developer Portfolio" } = Astro.props;
 				<div class="drawer-content flex flex-col">
 					<div class="mx-auto w-full lg:max-w-4xl lg:justify-center">
 						<Header />
-						<slot />
+						<div class="mx-5 lg:mx-2">
+							<slot />
+						</div>
 					</div>
 				</div>
 				<SideDrawer />
