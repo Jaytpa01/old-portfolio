@@ -1,7 +1,14 @@
 ---
+import TimelineContainer from "../components/Timeline/TimelineContainer.astro";
+import TimelineElement from "../components/Timeline/TimelineElement.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Resume | Jay Parry">
-	<div>this is my resume</div>
+	<div class="mt-3">
+		<TimelineContainer>
+			<TimelineElement title="Fullstack Developer" date="Today - Tomorrow">Hello</TimelineElement>
+			<TimelineElement title="Systems Engineer" date="Today - Tomorrow">Hello</TimelineElement>
+		</TimelineContainer>
+	</div>
 </BaseLayout>
