@@ -5,6 +5,7 @@ const projectSchema = z.object({
 	description: z.string().optional(),
 	publishDate: z.coerce.date().optional(),
 	tags: z.array(z.string()).optional(),
+	image: z.string().optional(),
 });
 
 const project = defineCollection({

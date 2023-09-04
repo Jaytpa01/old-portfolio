@@ -1,7 +1,8 @@
 ---
-title: osidfj
+title: Discord Bot with OpenAI Text Generation
 publishDate: Aug 28 2023
 slug: igustus
+image: https://cdn.discordapp.com/avatars/916969366438936617/26213f3b12ae0a2a827e5db3c62513e2.png?size=256
 ---
 ##### **Introduction**
 
