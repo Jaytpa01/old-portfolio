@@ -1,7 +1,7 @@
 ---
 title: Discord Bot with OpenAI Text Generation
 slug: igustus
-summary: "TODO: Write this."
+description: "TODO: Write this."
 publishDate: Aug 28 2023
 image: ../../assets/images/igustus.png
 ---
