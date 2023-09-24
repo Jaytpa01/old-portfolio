@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPathsOptions } from "astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Card from "../../components/Card.astro";
 
@@ -16,7 +16,7 @@ const { page } = Astro.props;
 	<!-- {page.data.map((p: any) => <div>{JSON.stringify(p)}</div>)} -->
 	<div class="space-y-6">
 		{
-			page.data.map((p: any) => (
+			page.data.map((p) => (
 				<Card title={p.data.title} to={`/projects/${p.slug}`} content={p.data.body} image={p.data.image} />
 			))
 		}
