@@ -1,19 +1,64 @@
 ---
 title: Discord Bot with OpenAI Text Generation
-publishDate: Aug 28 2023
 slug: igustus
+summary: "TODO: Write this."
+publishDate: Aug 28 2023
 image: ../../assets/images/igustus.png
 ---
-##### **Introduction**
+### Discord Bot w/ OpenAI Text Generation
 
-If you don't already know what Discord is, it's an incredibly popular text, voice, and video chat platform. Discord exposes an API that allows us to create applications that integrate with it. They go a step further and allow for the development of Bot users that can directly interact with users of the platform. They can perform a variety of tasks, from server automation, management, and games etc.
+#### Introduction
 
-##### **So What Did I Build?**
+<a href="https://discord.com/" target="_blank">Discord</a>, for those of you who may not know, is a widely used platform for text, voice, and video communication. One of its standout features is the availability of an API that allows developers to create applications that integrate with Discord. On top of that, Discord offers the ability to develop bots capable of direct interaction with a server's users. These bots can perform a wide array of tasks, from server management and automation to facilitating games and much more.
 
-Before ChatGPT was a household name and the great explosion of popularity in AI, around late 2021, I stumbled across OpenAI and their GPT models through my interest in an application called A.I Dungeon.
+#### So What Did I Build?
 
-Thanks to the pandemic I was using Discord heavily,  both to keep in touch with friends and because a few of my university courses were using it to manage projects.
+Back in late 2021, before ChatGPT became a household name and the AI revolution gained widespread recognition, my journey into the AI began with a fun application called A.I Dungeon.
 
-To stop myself from going mad in isolation, I decided to keep myself busy by working on a project that combine these two things. 
+At that time, like many others, I found myself heavily reliant on Discord thanks to Covid. I used it both to keep in touch with friends and as an integral part of my university courses, which was used for project management and collaboration.
 
-The idea was simple, train some AI models on the the text messages from a combination of my friends and see what the models had to say for themselves.
+To keep myself from going insane in isolation, I decided to keep myself busy by working on a project that combined these two aspects: Discord and AI.
+The idea was simple really: train some AI models using the text data from my friends, and develop a bot to interact with these models.
+
+#### How Did I Build It?
+
+For this project, I developed a bot that had the ability to extract the text messages from a few private servers that my friends and I were a part of. With this data, I trained an AI model using <a href="https://openai.com/api/" target="_blank">OpenAI's GPT-3 API</a>.
+
+I didn't stop at just one model though; instead, I got *very* carried away and trained several distinct models, each with their own unique "personalities". These included:
+
+1. **The Everything Model:** This model was trained using the entirety of my friend's text messages, resulting in a very unhinged conversationalist.
+2. **The Friend Fusion Models:** These models were crafted using data from a specific combination of friends.
+3. **Literary Fusion Models:** These models were further iterations on the models above. They were fusions of texts from friends and excerpts from various literary sources, consisting of sources such as: The Bible, a collection of all of Donald Trump's tweets.
+
+With this, we could specify the desired personality with a specific command to begin interacting with it. All you had to do was use the `/{INSERT_DESIRED_PERSONALITY}` command, followed by an optional prompt, i.e.
+
+```
+/igustus I've got a bad feeling about this....
+```
+
+#### The Nitty Gritty Technical Details
+
+**What I built it with:**
+I wrote the bot using <a href="https://go.dev" target="_blank">The Go Programming Language</a>, and <a href="https://github.com/bwmarrin/discordgo" target="_blank">DiscordGo</a>; a package that provides low level bindings to the Discord chat client API.
+
+I chose Go simply because I was already familiar with the language, and I enjoy working with it!
+
+**Text Data Extraction & Data Processing:**
+I built the data extraction directly into the bot by implementing a `/scrape` command. This command queries the Discord API for all data in the text channel it was issued in, with optional user IDs to filter by. This data was parsed into CSV and saved to the filesystem of my local machine.
+
+There were a few annoying things to work around here, mainly the fact that you could only request up to 100 messages from a channel per request, so I had to keep a reference to the last message's ID and pass that in as an index to the next request to the Discord API.
+
+**OpenAI GPT-3 Integration**:
+To train the models I used a CLI Tool provided by OpenAI. All I had to do was provide a file path to the CSV file of the data I wanted to train it with.
+
+To actually interact with the models and OpenAI's API, I used an unofficial Go client to make the API calls and handle parsing the API's response data into a Go struct.
+
+#### Wrapping Up
+
+This project was incredibly enjoyable to build, and was even more enjoyable to interact with. Here a few personal favourite responses:
+
+- funky broken
+
+There is absolutely room for improvement in many areas of this project, and I would love to revisit this some day! However, unfortunately all good things must come to an end (i.e I ran out of free OpenAI API credits), so this project now resides in my side-project graveyard.
+
+The source for this project can be found <a href="https://github.com/Jaytpa01/iGustus" target="_blank">here</a> if you'd like to have a little geez!
