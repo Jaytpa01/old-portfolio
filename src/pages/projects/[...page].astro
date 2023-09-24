@@ -14,7 +14,7 @@ const { page } = Astro.props;
 
 <BaseLayout title="Projects | Jay Parry">
 	<!-- {page.data.map((p: any) => <div>{JSON.stringify(p)}</div>)} -->
-	<div>
+	<div class="space-y-6">
 		{
 			page.data.map((p: any) => (
 				<Card title={p.data.title} to={`/projects/${p.slug}`} content={p.data.body} image={p.data.image} />
