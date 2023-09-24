@@ -6,7 +6,7 @@ const projectSchema = ({ image }: { image: Function }) =>
 		description: z.string().optional(),
 		publishDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).optional(),
-		image: image(),
+		image: image().optional(),
 	});
 
 const project = defineCollection({
