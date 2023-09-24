@@ -1,7 +1,7 @@
 ---
 title: Test Post
 slug: test
-summary: "TODO: Write this."
+description: "TODO: Write this."
 publishDate: Sep 24 2023
 image: ../../assets/images/itemPreview.png
 ---
