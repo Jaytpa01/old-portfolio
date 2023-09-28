@@ -1,5 +1,6 @@
 ---
 import NavContent from "./NavContent.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <!-- Navbar -->
@@ -17,15 +18,23 @@ import NavContent from "./NavContent.astro";
 		</label>
 	</div>
 	<div class="navbar-center lg:flex">
-		<a href="/" class="font-extrabold text-2xl text-slattery_orange-100">Jay Parry.</a>
+		<a href="/" class="font-extrabold text-2xl text-primary">Jay Parry.</a>
 	</div>
 
-	<div class="navbar-end"></div>
+	<div class="navbar-end pr-2">
+		<div class="lg:hidden">
+			<ThemeToggle />
+		</div>
+	</div>
 
 	<div class="flex-none hidden lg:block">
-		<ul class="menu menu-horizontal text-lg">
+		<ul class="menu menu-horizontal text-xl">
 			<!-- Navbar menu content here -->
 			<NavContent />
 		</ul>
+
+		<span class="align-middle">
+			<ThemeToggle />
+		</span>
 	</div>
 </div>

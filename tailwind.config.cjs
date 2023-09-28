@@ -3,6 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+	darkMode: "class",
 	theme: {
 		extend: {
 			colors: {
@@ -19,6 +20,7 @@ module.exports = {
 		themes: [
 			{
 				personal: {
+					...require("daisyui/src/theming/themes")["[data-theme=light]"],
 					primary: "#E7773A",
 					secondary: "#263C38",
 					accent: "#bf5218",
@@ -29,8 +31,13 @@ module.exports = {
 					warning: "#fbbd23",
 					error: "#f87272",
 				},
+				dark: {
+					...require("daisyui/src/theming/themes")["[data-theme=dark]"],
+					primary: "#E7773A",
+					secondary: "#263C38",
+					accent: "#bf5218",
+				},
 			},
-			"light",
 		],
 	},
 	plugins: [require("daisyui"), require("@tailwindcss/typography")],
