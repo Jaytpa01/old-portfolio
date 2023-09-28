@@ -14,7 +14,7 @@ const { title, content, to, image = "" } = Astro.props;
 <div class="card w-full lg:card-side bg-base-100 border-2 border-neutral-300 dark:border-neutral-700">
 	{
 		image && (
-			<figure class="border-r-2 border-neutral-300 dark:border-neutral-700">
+			<figure class="border-b-2 lg:border-b-0 lg:border-r-2 border-neutral-300 dark:border-neutral-700">
 				<Image src={image} alt="Test Image" height="256" width="256" />
 			</figure>
 		)
