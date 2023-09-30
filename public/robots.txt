@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://jayparry.dev/sitemap-index.xml
