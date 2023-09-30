@@ -1,0 +1,24 @@
+---
+export type Breadcrumb = {
+	text: string;
+	href: string;
+};
+
+interface Props {
+	crumbs: Breadcrumb[];
+}
+
+const { crumbs } = Astro.props;
+---
+
+<div class="breadcrumbs text-sm">
+	<ul>
+		{
+			crumbs.map((c) => (
+				<li>
+					<a href={c.href}>{c.text}</a>
+				</li>
+			))
+		}
+	</ul>
+</div>
