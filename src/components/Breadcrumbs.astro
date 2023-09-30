@@ -1,24 +1,44 @@
 ---
-export type Breadcrumb = {
-	text: string;
-	href: string;
-};
+const { pathname } = Astro.url;
+console.log(Astro.url);
+console.log(pathname);
 
-interface Props {
-	crumbs: Breadcrumb[];
-}
-
-const { crumbs } = Astro.props;
+const crumbs = pathname
+	.replace(/\/+$/, "") // remove possible trailing slash
+	.split("/") // split by slash to get each section of the path
+	.slice(1);
+console.log({ crumbs });
 ---
 
-<div class="breadcrumbs text-sm">
-	<ul>
-		{
-			crumbs.map((c) => (
+{
+	crumbs.length > 0 && (
+		<div class="text-md breadcrumbs p-3">
+			<ul>
 				<li>
-					<a href={c.href}>{c.text}</a>
+					<a href="/">Home</a>
 				</li>
-			))
-		}
-	</ul>
-</div>
+				{crumbs.map((crumb, index) => {
+					const href = `/${crumbs.slice(0, index + 1).join("/")}`;
+					const isLastCrumb = crumbs.length - 1 === index;
+
+					// this will make the last crumb lowercase, used for projects and blogposts,
+					// but will keep things like
+					// - Home > Projects
+					// - Home > Resume
+					// capitalised
+					const letterCase =
+						isLastCrumb && crumbs.length > 1 ? "lowercase" : "capitalize";
+
+					return (
+						<li class={letterCase}>
+							{
+								// if last crumb, return just text, no link
+								isLastCrumb ? crumb : <a {href}>{crumb}</a>
+							}
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	)
+}
