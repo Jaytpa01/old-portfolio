@@ -1,16 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import getAllProjectsAndTags from "./tags";
 
-const projects = await getCollection("project");
-const tags = [
-	...new Set(
-		projects
-			.map((p) => p.data.tags?.map((t) => t.toLowerCase()) || "") // all tags lowercased
-			.flat()
-			.filter((t) => !!t), // filter out falsy tags
-	),
-];
+const { tags } = await getAllProjectsAndTags();
 ---
 
 <BaseLayout title="Project Tags | Jay Parry">
@@ -20,7 +12,7 @@ const tags = [
 		<div>
 			{
 				tags.map((tag) => (
-					<span class="mb-2 mr-2 inline-block border-b-2 border-dashed text-2xl">
+					<span class="mb-3 mr-3 inline-block border-b-2 border-dashed text-2xl">
 						<a href={`/projects/tags/${tag}`}>#{tag}</a>
 					</span>
 				))
