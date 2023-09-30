@@ -6,7 +6,7 @@ import Card from "@components/Card.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const projects = await getCollection("project");
-	return paginate(projects, { pageSize: 10 });
+	return paginate(projects, { pageSize: 1 });
 }
 
 interface Props {
@@ -14,6 +14,7 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const { next } = page.url;
 ---
 
 <BaseLayout title="Projects | Jay Parry">
@@ -31,4 +32,6 @@ const { page } = Astro.props;
 			}
 		</div>
 	</section>
+
+	<button><a href={next}>Next</a></button>
 </BaseLayout>
