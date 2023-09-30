@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { type InferGetStaticParamsType } from "astro";
+
+export async function getStaticPaths() {
+	const projects = await getCollection("project");
+	const tags = [
+		...new Set(
+			projects
+				.map((p) => p.data.tags?.map((t) => t.toLowerCase()) || "") // all tags lowercased
+				.flat()
+				.filter((t) => !!t), // filter out falsy tags
+		),
+	];
+
+	return tags.map((t) => ({
+		params: { tag: t },
+		// props: { projects: projects },
+	}));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+
+const { tag } = Astro.params as Params;
+---
+
+<BaseLayout title="Projects | Jay Parry">
+	<h1>{tag}</h1>
+	<section class="pt-6">
+		<div class="space-y-6"></div>
+	</section>
+</BaseLayout>

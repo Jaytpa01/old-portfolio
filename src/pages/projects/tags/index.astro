@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("project");
+const tags = [
+	...new Set(
+		projects
+			.map((p) => p.data.tags?.map((t) => t.toLowerCase()) || "") // all tags lowercased
+			.flat()
+			.filter((t) => !!t), // filter out falsy tags
+	),
+];
+---
+
+<BaseLayout title="Project Tags | Jay Parry">
+	<section class="space-y-2">
+		<h1 class="text-4xl font-bold">Tags</h1>
+		<h2 class="text-lg italic">All tags used in my projects!</h2>
+		<div>
+			{
+				tags.map((tag) => (
+					<span class="mb-2 mr-2 inline-block border-b-2 border-dashed text-2xl">
+						<a href={`/projects/tags/${tag}`}>#{tag}</a>
+					</span>
+				))
+			}
+		</div>
+	</section>
+</BaseLayout>
