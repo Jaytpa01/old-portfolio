@@ -11,7 +11,9 @@ interface Props {
 const { title, content, to, image = "" } = Astro.props;
 ---
 
-<div class="card w-full lg:card-side bg-base-100 border-2 border-gray-200 border-opacity-70 dark:border-neutral-700">
+<div
+	class="card w-full lg:card-side bg-base-100 border-2 border-gray-200 border-opacity-70 dark:border-neutral-700"
+>
 	{
 		image && (
 			<figure class="border-b-2 lg:border-b-0 lg:border-r-2 border-gray-200 border-opacity-70 dark:border-neutral-700">
@@ -23,7 +25,10 @@ const { title, content, to, image = "" } = Astro.props;
 		<h2 class="card-title">{title}</h2>
 		<p>{content}</p>
 		<div class="card-actions w-full">
-			<a class="btn btn-primary no-animation active:bg-accent w-full text-white" href={to}>Read More</a>
+			<a
+				class="btn btn-primary no-animation active:bg-accent w-full text-white"
+				href={to}>Read More</a
+			>
 		</div>
 	</div>
 </div>

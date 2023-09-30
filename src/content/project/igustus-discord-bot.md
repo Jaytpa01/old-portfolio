@@ -5,14 +5,17 @@ description: "TODO: Write this."
 publishDate: Aug 28 2023
 image: ../../assets/images/igustus/igustus.png
 ---
+
 ### Discord Bot w/ OpenAI Text Generation
 
 ### Introduction
+
 ---
 
 <a href="https://discord.com/" target="_blank">Discord</a>, for those of you who may not know, is a widely used platform for text, voice, and video communication. One of its standout features is the availability of an API that allows developers to create applications that integrate with Discord. On top of that, Discord offers the ability to develop bots capable of direct interaction with a server's users. These bots can perform a wide array of tasks, from server management and automation to facilitating games and much more.
 
 ### So What Did I Build?
+
 ---
 
 Back in late 2021, before ChatGPT became a household name and the AI revolution gained widespread recognition, my journey into the AI began with a fun application called A.I Dungeon.
@@ -23,15 +26,16 @@ To keep myself from going insane in isolation, I decided to keep myself busy by 
 The idea was simple really: train some AI models using the text data from my friends, and develop a bot to interact with these models.
 
 ### How Did I Build It?
+
 ---
 
 For this project, I developed a bot that had the ability to extract the text messages from a few private servers that my friends and I were a part of. With this data, I trained an AI model using <a href="https://openai.com/api/" target="_blank">OpenAI's GPT-3 API</a>.
 
-I didn't stop at just one model though; instead, I got *very* carried away and trained several distinct models, each with their own unique "personalities". These included:
+I didn't stop at just one model though; instead, I got _very_ carried away and trained several distinct models, each with their own unique "personalities". These included:
 
-1. ***The Everything Model:***<br/>This model was trained using the entirety of my friend's text messages, resulting in a very unhinged conversationalist.
-2. ***The Friend Fusion Models:***<br/>These models were crafted using data from a specific combination of friends.
-3. ***Literary Fusion Models:***<br/>These models were further iterations on the models above. They were fusions of texts from friends and excerpts from various literary sources, consisting of sources such as: The Bible, a collection of all of Donald Trump's tweets.
+1. **_The Everything Model:_**<br/>This model was trained using the entirety of my friend's text messages, resulting in a very unhinged conversationalist.
+2. **_The Friend Fusion Models:_**<br/>These models were crafted using data from a specific combination of friends.
+3. **_Literary Fusion Models:_**<br/>These models were further iterations on the models above. They were fusions of texts from friends and excerpts from various literary sources, consisting of sources such as: The Bible, a collection of all of Donald Trump's tweets.
 
 With this, we could specify the desired personality with a specific command to begin interacting with it. All you had to do was use the `/{PERSONALITY}` command, followed by an optional prompt, i.e.
 
@@ -40,6 +44,7 @@ With this, we could specify the desired personality with a specific command to b
 ```
 
 ### The Nitty Gritty Technical Details
+
 ---
 
 #### **What I built it with:**
@@ -61,6 +66,7 @@ To train the models I used a CLI Tool provided by OpenAI. All I had to do was pr
 To actually interact with the models and OpenAI's API, I used an unofficial Go client to make the API calls and handle parsing the API's response data into a Go struct.
 
 ### Wrapping Up
+
 ---
 
 This project was great fun to build, and was even more enjoyable to interact with. Here a few personal favourite responses:
