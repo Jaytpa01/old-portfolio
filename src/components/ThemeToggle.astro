@@ -69,39 +69,53 @@
 
 <script>
 	function getDefaultTheme(): string {
-		if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-			return localStorage.getItem("theme")!;
-		}
 		if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
 			return "dark";
 		}
 		return "personal";
 	}
 
-	const theme = getDefaultTheme();
+	function getCurrentTheme(): string {
+		if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+			return localStorage.getItem("theme")!;
+		}
+		return getDefaultTheme();
+	}
 
-	// set data-theme for DaisyUI
-	document.documentElement.setAttribute("data-theme", theme);
-	// set html class attribute so other Tailwind dark: selectors work
-	document.documentElement.className = theme;
-	window.localStorage.setItem("theme", theme);
+	function setTheme(theme: string) {
+		// set data-theme for DaisyUI
+		document.documentElement.setAttribute("data-theme", theme);
+		// set html class attribute so other Tailwind dark: selectors work
+		document.documentElement.className = theme;
+		// set new theme in local storage
+		localStorage.setItem("theme", theme);
+	}
+
+	function addAllToggleEventListeners() {
+		const toggleButtons = document.getElementsByClassName("theme-toggle");
+		for (const button of toggleButtons) {
+			button.addEventListener("click", handleToggleClick);
+		}
+	}
+
+	// on first load, get theme
+	const theme = getCurrentTheme();
+	setTheme(theme);
 
 	const handleToggleClick = () => {
-		const currentTheme = document.documentElement.getAttribute("data-theme");
+		const currentTheme = getCurrentTheme();
 		const isDark = currentTheme === "dark";
-
 		// toggle theme
 		const newTheme = isDark ? "personal" : "dark";
-
-		// set data-theme for DaisyUI
-		document.documentElement.setAttribute("data-theme", newTheme);
-		// set html class attribute so other Tailwind dark: selectors work
-		document.documentElement.className = newTheme;
-		localStorage.setItem("theme", newTheme);
+		setTheme(newTheme);
 	};
 
-	const toggleButtons = document.getElementsByClassName("theme-toggle");
-	for (const button of toggleButtons) {
-		button.addEventListener("click", handleToggleClick);
-	}
+	addAllToggleEventListeners();
+
+	// this is needed to persist dark mode using the new ViewTransitions API
+	document.addEventListener("astro:after-swap", function () {
+		const theme = getCurrentTheme();
+		setTheme(theme);
+		addAllToggleEventListeners();
+	});
 </script>
