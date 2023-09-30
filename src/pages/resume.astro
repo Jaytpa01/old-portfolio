@@ -2,12 +2,16 @@
 import TimelineContainer from "@components/Timeline/TimelineContainer.astro";
 import TimelineElement from "@components/Timeline/TimelineElement.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { TAGS } from "../constants";
+
+const { GO, NODE, REACT, GCP, KUBERNETES } = TAGS;
 
 interface Job {
 	title: string;
 	employer: string;
 	date: string;
 	description: string;
+	tags?: string[];
 }
 
 const jobs: Job[] = [
@@ -17,6 +21,7 @@ const jobs: Job[] = [
 		date: "June 2023 - Present",
 		description:
 			"I primarily concentrated on development for a major online auction house client, collaborating directly with the client's Head of Technology to gather requirements, address issues, and introduce new features. I utilized Node.js and React to design and implement solutions and to successfully integrate with various third-party systems, such as Salesforce, Westpac PayWay, and DoxAI to enable and improve functionality.",
+		tags: [NODE, REACT],
 	},
 	{
 		title: "Systems Engineer",
@@ -24,6 +29,7 @@ const jobs: Job[] = [
 		date: "March 2021 - May 2023",
 		description:
 			"As the sole developer, I managed various responsibilities within the software development lifecycle at Automated; including designing and maintaining RESTful APIs in Golang and Node.js, managing a TCP server for IoT device control, developing a user-friendly React application for sports lighting API interaction, and setting up a robust development environment in Google Kubernetes Engine for efficient project development.",
+		tags: [GO, NODE, REACT, GCP, KUBERNETES],
 	},
 ];
 ---
@@ -33,9 +39,14 @@ const jobs: Job[] = [
 		<TimelineContainer>
 			{
 				jobs.map((job) => {
-					const { title, date, description, employer } = job;
+					const { title, date, description, employer, tags } = job;
 					return (
-						<TimelineElement title={title} date={date} employer={employer}>
+						<TimelineElement
+							title={title}
+							date={date}
+							employer={employer}
+							tags={tags}
+						>
 							{description}
 						</TimelineElement>
 					);

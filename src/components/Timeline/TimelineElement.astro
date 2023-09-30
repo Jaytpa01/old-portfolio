@@ -3,9 +3,10 @@ interface Props {
 	title: string;
 	date: string;
 	employer: string;
+	tags?: string[];
 }
 
-const { title, date, employer } = Astro.props;
+const { title, date, employer, tags = [] } = Astro.props;
 ---
 
 <li class="mb-10 ml-4">
@@ -24,4 +25,16 @@ const { title, date, employer } = Astro.props;
 	<p class="text-base font-normal text-base-content">
 		<slot />
 	</p>
+
+	{
+		tags && (
+			<div class="pt-4">
+				{tags.map((tag) => (
+					<span class="inline-block mb-2 mr-2 font-semibold px-2 border rounded-md text-center dark:border-base-content">
+						{tag}
+					</span>
+				))}
+			</div>
+		)
+	}
 </li>
