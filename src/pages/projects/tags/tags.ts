@@ -7,7 +7,8 @@ export default async function getAllProjectsAndTags() {
 			projects
 				.map((p) => p.data.tags?.map((t) => t.toLowerCase()) || "") // all tags lowercased
 				.flat()
-				.filter((t) => !!t), // filter out falsy tags
+				.filter((t) => !!t) // filter out falsy tags
+				.sort(),
 		),
 	];
 
