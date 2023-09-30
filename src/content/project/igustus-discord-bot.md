@@ -4,6 +4,9 @@ slug: igustus
 description: "TODO: Write this."
 publishDate: Aug 28 2023
 image: ../../assets/images/igustus/igustus.png
+tags: 
+    - Go
+    - AI
 ---
 
 # Discord Bot with OpenAI Text Generation
