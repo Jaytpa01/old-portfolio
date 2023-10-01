@@ -6,9 +6,14 @@ import { ViewTransitions } from "astro:transitions";
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
 }
 
-const { title, description = "Jay Parry's Developer Portfolio" } = Astro.props;
+const {
+	title,
+	description = "Jay Parry's Developer Portfolio",
+	image,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -83,7 +88,14 @@ const { title, description = "Jay Parry's Developer Portfolio" } = Astro.props;
 			property="og:description"
 			content={description}
 		/>
-		<!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
+		{
+			image && (
+				<meta
+					property="og:image"
+					content={new URL(image, Astro.url)}
+				/>
+			)
+		}
 
 		<!-- Twitter -->
 		<meta
@@ -102,7 +114,14 @@ const { title, description = "Jay Parry's Developer Portfolio" } = Astro.props;
 			property="twitter:description"
 			content={description}
 		/>
-		<!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
+		{
+			image && (
+				<meta
+					property="twitter:image"
+					content={new URL(image, Astro.url)}
+				/>
+			)
+		}
 
 		<title>{title}</title>
 	</head>
