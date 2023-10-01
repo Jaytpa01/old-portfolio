@@ -1,6 +1,11 @@
+import type { ImageMetadata } from "astro";
 import { z, defineCollection } from "astro:content";
 
-const projectSchema = ({ image }: { image: Function }) =>
+interface ProjectSchemaParams {
+	image: () => any;
+}
+
+const projectSchema = ({ image }: ProjectSchemaParams) =>
 	z.object({
 		title: z.string(),
 		description: z.string().optional(),
