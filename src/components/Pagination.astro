@@ -1,18 +1,65 @@
 ---
 import type { Page } from "astro";
+import classNames from "classnames";
 interface Props {
 	page: Page;
 }
 
 const { page } = Astro.props;
-const { next, prev } = page.url;
+const { currentPage, url } = page;
+
+// pull the next and current urls
+const { next, prev } = url;
 ---
 
 <nav class="join">
-	<button class="btn join-item">
-		<a href={prev}>Previous</a>
-	</button>
-	<button class="btn join-item">
-		<a href={next}>Next</a>
-	</button>
+	<a
+		href={prev}
+		class={classNames("btn join-item dark:bg-neutral", {
+			"btn-disabled": !prev,
+		})}
+	>
+		<svg
+			class="h-2.5 w-2.5"
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 6 10"
+		>
+			<path
+				stroke="currentColor"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M5 1 1 5l4 4"
+			></path>
+		</svg>
+		 Previous
+	</a>
+	<button class="btn join-item no-animation dark:bg-neutral"
+		>Page {currentPage}</button
+	>
+	<a
+		href={next}
+		class={classNames("btn join-item dark:bg-neutral", {
+			"btn-disabled": !next,
+		})}
+	>
+		Next
+		<svg
+			class="h-3 w-3"
+			aria-hidden="true"
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 6 10"
+		>
+			<path
+				stroke="currentColor"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="m1 9 4-4-4-4"
+			></path>
+		</svg>
+	</a>
 </nav>

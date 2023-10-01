@@ -7,7 +7,7 @@ import Pagination from "@components/Pagination.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const projects = await getCollection("project");
-	return paginate(projects, { pageSize: 1 });
+	return paginate(projects, { pageSize: 5 });
 }
 
 interface Props {
@@ -34,5 +34,7 @@ const { next } = page.url;
 		</div>
 	</section>
 
-	<Pagination {page} />
+	<div class="pt-8 text-center">
+		<Pagination {page} />
+	</div>
 </BaseLayout>
