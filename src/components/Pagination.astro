@@ -3,9 +3,16 @@ import type { Page } from "astro";
 interface Props {
 	page: Page;
 }
+
+const { page } = Astro.props;
+const { next, prev } = page.url;
 ---
 
 <nav class="join">
-	<button class="btn join-item">Previous</button>
-	<button class="btn join-item">Next</button>
+	<button class="btn join-item">
+		<a href={prev}>Previous</a>
+	</button>
+	<button class="btn join-item">
+		<a href={next}>Next</a>
+	</button>
 </nav>
