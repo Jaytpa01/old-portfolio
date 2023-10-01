@@ -20,7 +20,13 @@ const project = entry.data;
 ---
 
 <BaseLayout title={project.title}>
-	<article>
+	<article class="space-y-5">
+		<h1
+			class="text-5xl font-extrabold"
+			transition:name={project.title}
+		>
+			{project.title}
+		</h1>
 		<div class="prose prose-lg max-w-none prose-img:mx-auto prose-hr:my-5">
 			<Content />
 		</div>
