@@ -4,10 +4,11 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Card from "@components/Card.astro";
 import Pagination from "@components/Pagination.astro";
+import { PAGE_SIZE } from "@content/config";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const projects = await getCollection("project");
-	return paginate(projects, { pageSize: 3 });
+	return paginate(projects, { pageSize: PAGE_SIZE });
 }
 
 interface Props {

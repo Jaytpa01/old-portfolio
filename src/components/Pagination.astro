@@ -12,54 +12,59 @@ const { currentPage, url } = page;
 const { next, prev } = url;
 ---
 
-<nav class="join">
-	<a
-		href={prev}
-		class={classNames("btn join-item dark:bg-neutral", {
-			"btn-disabled": !prev,
-		})}
-	>
-		<svg
-			class="h-2.5 w-2.5"
-			aria-hidden="true"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 6 10"
-		>
-			<path
-				stroke="currentColor"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="M5 1 1 5l4 4"
-			></path>
-		</svg>
-		 Previous
-	</a>
-	<button class="btn join-item no-animation dark:bg-neutral"
-		>Page {currentPage}</button
-	>
-	<a
-		href={next}
-		class={classNames("btn join-item dark:bg-neutral", {
-			"btn-disabled": !next,
-		})}
-	>
-		Next
-		<svg
-			class="h-3 w-3"
-			aria-hidden="true"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 6 10"
-		>
-			<path
-				stroke="currentColor"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="m1 9 4-4-4-4"
-			></path>
-		</svg>
-	</a>
-</nav>
+{
+	// dont render the element if there is less than pageSize
+	page.total > page.size && (
+		<nav class="join">
+			<a
+				href={prev}
+				class={classNames("btn join-item dark:bg-neutral", {
+					"btn-disabled": !prev,
+				})}
+			>
+				<svg
+					class="h-2.5 w-2.5"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 6 10"
+				>
+					<path
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M5 1 1 5l4 4"
+					/>
+				</svg>
+				Previous
+			</a>
+			<button class="btn join-item no-animation dark:bg-neutral">
+				Page {currentPage}
+			</button>
+			<a
+				href={next}
+				class={classNames("btn join-item dark:bg-neutral", {
+					"btn-disabled": !next,
+				})}
+			>
+				Next
+				<svg
+					class="h-3 w-3"
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 6 10"
+				>
+					<path
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="m1 9 4-4-4-4"
+					/>
+				</svg>
+			</a>
+		</nav>
+	)
+}
