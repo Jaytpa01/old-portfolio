@@ -3,6 +3,7 @@ import type { GetStaticPathsOptions, Page } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Card from "@components/Card.astro";
+import Pagination from "@components/Pagination.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const projects = await getCollection("project");
@@ -33,5 +34,5 @@ const { next } = page.url;
 		</div>
 	</section>
 
-	<button><a href={next}>Next</a></button>
+	<Pagination {page} />
 </BaseLayout>
