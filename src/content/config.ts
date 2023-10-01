@@ -22,3 +22,5 @@ const project = defineCollection({
 export const collections = {
 	project,
 };
+
+export const PAGE_SIZE = 2;
