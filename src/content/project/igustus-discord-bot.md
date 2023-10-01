@@ -9,8 +9,6 @@ tags:
     - AI
 ---
 
-# Discord Bot with OpenAI Text Generation
-
 ### Introduction
 
 ---
