@@ -19,10 +19,7 @@ const { Content } = await entry.render();
 const project = entry.data;
 ---
 
-<BaseLayout
-	title={project.title}
-	image={project.image}
->
+<BaseLayout title={project.title}>
 	<article class="space-y-5">
 		<h1
 			class="text-5xl font-extrabold"
