@@ -1,13 +1,10 @@
 ---
 const { pathname } = Astro.url;
-console.log(Astro.url);
-console.log(pathname);
 
 const crumbs = pathname
 	.replace(/\/+$/, "") // remove possible trailing slash
 	.split("/") // split by slash to get each section of the path
 	.slice(1);
-console.log({ crumbs });
 ---
 
 {

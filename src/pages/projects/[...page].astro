@@ -3,10 +3,11 @@ import type { GetStaticPathsOptions, Page } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Card from "@components/Card.astro";
+import Pagination from "@components/Pagination.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const projects = await getCollection("project");
-	return paginate(projects, { pageSize: 10 });
+	return paginate(projects, { pageSize: 3 });
 }
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const { next } = page.url;
 ---
 
 <BaseLayout title="Projects | Jay Parry">
@@ -31,4 +33,8 @@ const { page } = Astro.props;
 			}
 		</div>
 	</section>
+
+	<div class="pt-8 text-center">
+		<Pagination {page} />
+	</div>
 </BaseLayout>

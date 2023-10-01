@@ -6,8 +6,6 @@ publishDate: Sep 24 2023
 image: ../../assets/images/itemPreview.png
 ---
 
-# This is a test
-
 <a href="http://example.com/" target="_blank">Hello, world!</a>
 [Example](http://example.com/)
 Heres some funky test text!
