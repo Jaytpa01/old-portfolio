@@ -15,6 +15,11 @@ const crumbs = pathname
 					<a href="/">Home</a>
 				</li>
 				{crumbs.map((crumb, index) => {
+					// becasue the breadcrumbs are built using the url, we need to decode each component
+					// to prevent url encoded text appearing i.e stop "test%20blog" from rendering, and instead
+					// render "test blog"
+					const decodedCrumb = decodeURIComponent(crumb);
+
 					const href = `/${crumbs.slice(0, index + 1).join("/")}`;
 					const isLastCrumb = crumbs.length - 1 === index;
 
@@ -30,7 +35,7 @@ const crumbs = pathname
 						<li class={letterCase}>
 							{
 								// if last crumb, return just text, no link
-								isLastCrumb ? crumb : <a {href}>{crumb}</a>
+								isLastCrumb ? decodedCrumb : <a {href}>{decodedCrumb}</a>
 							}
 						</li>
 					);
