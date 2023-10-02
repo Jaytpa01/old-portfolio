@@ -10,7 +10,7 @@ const articleSchema = ({ image }: ArticleSchemaParams) =>
 		title: z.string(),
 		description: z.string().optional(),
 		publishDate: z.coerce.date().optional(),
-		tags: z.array(z.string()).optional(),
+		tags: z.array(z.string().toLowerCase()).optional(),
 		image: image().optional(),
 	});
 
