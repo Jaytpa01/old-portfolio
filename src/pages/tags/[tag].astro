@@ -1,0 +1,54 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import {
+	type InferGetStaticParamsType,
+	type InferGetStaticPropsType,
+} from "astro";
+import { getAllTags } from "./tags";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const tags = await getAllTags();
+	const projects = await getCollection("project");
+	const posts = await getCollection("blog");
+
+	return tags.map((tag) => ({
+		params: { tag },
+		props: {
+			projects: projects.filter((p) => p.data.tags?.includes(tag)),
+			posts: posts.filter((p) => p.data.tags?.includes(tag)),
+		},
+	}));
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag } = Astro.params as Params;
+const { projects, posts } = Astro.props as Props;
+---
+
+<BaseLayout title={`${tag} | Jay Parry"`}>
+	<h1 class="text-2xl font-extrabold">
+		Posts and Projects about <span
+			class="text-primary"
+			transition:name={tag}
+		>
+			{tag}
+		</span>
+	</h1>
+
+	<section class="pt-6">
+		<h2>Projects</h2>
+		<div class="space-y-10">
+			{projects.map((p) => <p>{JSON.stringify(p, null, "\t")}</p>)}
+		</div>
+	</section>
+
+	<section class="pt-6">
+		<h2>Posts</h2>
+		<div class="space-y-10">
+			{posts.map((p) => <p>{JSON.stringify(p, null, "\t")}</p>)}
+		</div>
+	</section>
+</BaseLayout>

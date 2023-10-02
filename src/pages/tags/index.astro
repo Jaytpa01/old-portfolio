@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import getAllProjectsAndTags from "./tags";
+import { getAllTags } from "./tags";
 
-const { tags } = await getAllProjectsAndTags();
+const tags = await getAllTags();
 ---
 
 <BaseLayout title="Project Tags | Jay Parry">
@@ -13,7 +13,12 @@ const { tags } = await getAllProjectsAndTags();
 			{
 				tags.map((tag) => (
 					<span class="mb-3 mr-3 inline-block border-b-2 border-dashed text-2xl">
-						<a href={`/projects/tags/${tag}`}>#{tag}</a>
+						<a
+							href={`/tags/${tag}`}
+							transition:name={tag}
+						>
+							#{tag}
+						</a>
 					</span>
 				))
 			}
