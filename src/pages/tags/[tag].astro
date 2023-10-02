@@ -6,6 +6,7 @@ import {
 } from "astro";
 import { getAllTags } from "./tags";
 import { getCollection } from "astro:content";
+import PageHeading from "@components/PageHeading.astro";
 
 export async function getStaticPaths() {
 	const tags = await getAllTags();
@@ -29,14 +30,14 @@ const { projects, posts } = Astro.props as Props;
 ---
 
 <BaseLayout title={`${tag} | Jay Parry"`}>
-	<h1 class="text-2xl font-extrabold">
+	<PageHeading>
 		Posts and Projects about <span
 			class="text-primary"
 			transition:name={tag}
 		>
 			{tag}
 		</span>
-	</h1>
+	</PageHeading>
 
 	<section class="pt-6">
 		<h2>Projects</h2>
