@@ -1,11 +1,11 @@
 import type { ImageMetadata } from "astro";
 import { z, defineCollection } from "astro:content";
 
-interface ProjectSchemaParams {
+interface ArticleSchemaParams {
 	image: () => any;
 }
 
-const projectSchema = ({ image }: ProjectSchemaParams) =>
+const articleSchema = ({ image }: ArticleSchemaParams) =>
 	z.object({
 		title: z.string(),
 		description: z.string().optional(),
@@ -16,11 +16,17 @@ const projectSchema = ({ image }: ProjectSchemaParams) =>
 
 const project = defineCollection({
 	type: "content",
-	schema: projectSchema,
+	schema: articleSchema,
+});
+
+const blog = defineCollection({
+	type: "content",
+	schema: articleSchema,
 });
 
 export const collections = {
 	project,
+	blog,
 };
 
 export const PAGE_SIZE = 2;

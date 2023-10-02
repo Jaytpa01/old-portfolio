@@ -1,0 +1,40 @@
+---
+import type { GetStaticPathsOptions, Page } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Card from "@components/Card.astro";
+import Pagination from "@components/Pagination.astro";
+import { PAGE_SIZE } from "@content/config";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+	const blogPosts = await getCollection("blog");
+	return paginate(blogPosts, { pageSize: PAGE_SIZE });
+}
+
+interface Props {
+	page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Projects | Jay Parry">
+	<section class="pt-6">
+		<div class="space-y-6">
+			{
+				page.data.map((p) => (
+					<Card
+						title={p.data.title}
+						to={`/blog/${p.slug}`}
+						content={p.data.description}
+						image={p.data.image}
+					/>
+				))
+			}
+		</div>
+	</section>
+
+	<div class="pt-8 text-center">
+		<Pagination {page} />
+	</div>
+</BaseLayout>
