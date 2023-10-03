@@ -1,19 +1,25 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import getAllProjectsAndTags from "./tags";
+import { getAllTags } from "./tags";
+import PageHeading from "@components/PageHeading.astro";
 
-const { tags } = await getAllProjectsAndTags();
+const tags = await getAllTags();
 ---
 
 <BaseLayout title="Project Tags | Jay Parry">
 	<section class="space-y-2">
-		<h1 class="text-4xl font-bold">Tags</h1>
+		<PageHeading>Tags</PageHeading>
 		<h2 class="text-lg italic">All tags used in my projects!</h2>
 		<div>
 			{
 				tags.map((tag) => (
 					<span class="mb-3 mr-3 inline-block border-b-2 border-dashed text-2xl">
-						<a href={`/projects/tags/${tag}`}>#{tag}</a>
+						<a
+							href={`/tags/${tag}`}
+							transition:name={tag}
+						>
+							#{tag}
+						</a>
 					</span>
 				))
 			}

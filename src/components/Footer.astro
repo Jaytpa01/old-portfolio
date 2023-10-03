@@ -1,0 +1,14 @@
+---
+import Socials from "./Socials.astro";
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto py-8">
+	<div class="text-md flex flex-col items-center">
+		<div class="flex space-x-4 pb-2">
+			<Socials size="32" />
+		</div>
+		<div>Copyright &copy; Jay Parry {year}</div>
+		<div>All rights reserved.</div>
+	</div>
+</footer>
