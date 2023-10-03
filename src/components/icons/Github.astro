@@ -1,5 +1,6 @@
 ---
-const { size } = Astro.props as IconProps;
+interface Props extends IconProps {}
+const { size } = Astro.props;
 ---
 
 <svg
