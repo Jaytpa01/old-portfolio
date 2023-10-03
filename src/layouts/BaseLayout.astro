@@ -1,5 +1,6 @@
 ---
 import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import SideDrawer from "@components/SideDrawer.astro";
 import type { ImageMetadata } from "astro";
@@ -129,7 +130,7 @@ const {
 		<title>{title}</title>
 	</head>
 	<body>
-		<main class="mx-auto">
+		<main class="mx-auto flex min-h-screen flex-col">
 			<div class="drawer">
 				<input
 					id="my-drawer"
@@ -147,6 +148,7 @@ const {
 				</div>
 				<SideDrawer />
 			</div>
+			<Footer />
 		</main>
 	</body>
 </html>
