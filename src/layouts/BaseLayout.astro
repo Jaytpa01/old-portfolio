@@ -5,7 +5,7 @@ import Header from "@components/Header.astro";
 import SideDrawer from "@components/SideDrawer.astro";
 import type { ImageMetadata } from "astro";
 import { ViewTransitions } from "astro:transitions";
-interface Props {
+export interface Props {
 	title: string;
 	description?: string;
 	image?: ImageMetadata;

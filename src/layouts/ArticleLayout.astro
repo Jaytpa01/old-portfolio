@@ -1,0 +1,31 @@
+---
+import PageHeading from "@components/PageHeading.astro";
+import BaseLayout from "./BaseLayout.astro";
+import type { Props as BaseProps } from "./BaseLayout.astro";
+
+interface Props extends BaseProps {}
+
+const { title, description, image } = Astro.props;
+---
+
+<BaseLayout
+	{title}
+	{description}
+	{image}
+/>
+
+<BaseLayout
+	title={title}
+	{description}
+	image={image}
+>
+	<article class="space-y-5">
+		<PageHeading transitionName={title}>
+			{title}
+		</PageHeading>
+
+		<div class="prose prose-lg max-w-none prose-img:mx-auto prose-hr:my-5">
+			<slot />
+		</div>
+	</article>
+</BaseLayout>
