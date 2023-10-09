@@ -6,6 +6,7 @@ import Card from "@components/Card.astro";
 import Pagination from "@components/Pagination.astro";
 import { PAGE_SIZE } from "@content/config";
 import PageHeading from "@components/PageHeading.astro";
+import BlogCard from "@components/BlogCard.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 	const blogPosts = await getCollection("blog");
@@ -28,11 +29,11 @@ const { page } = Astro.props;
 		<div class="space-y-6">
 			{
 				page.data.map((p) => (
-					<Card
+					<BlogCard
 						title={p.data.title}
+						publishDate={p.data.publishDate}
 						to={`/blog/${p.slug}`}
-						content={p.data.description}
-						image={p.data.image}
+						description={p.data.description}
 					/>
 				))
 			}
