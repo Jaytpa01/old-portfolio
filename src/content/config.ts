@@ -8,8 +8,8 @@ interface ArticleSchemaParams {
 const articleSchema = ({ image }: ArticleSchemaParams) =>
 	z.object({
 		title: z.string(),
-		description: z.string().optional(),
-		publishDate: z.coerce.date().optional(),
+		description: z.string(),
+		publishDate: z.coerce.date().default(new Date()),
 		tags: z.array(z.string().toLowerCase()).optional(),
 		image: image().optional(),
 	});
