@@ -69,10 +69,7 @@
 
 <script>
 	function getDefaultTheme(): string {
-		if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-			return "dark";
-		}
-		return "personal";
+		return "dark";
 	}
 
 	function getCurrentTheme(): string {
