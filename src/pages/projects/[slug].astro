@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import PageHeading from "@components/PageHeading.astro";
+import ArticleLayout from "@layouts/ArticleLayout.astro";
 
 export async function getStaticPaths() {
 	const postEntries = await getCollection("project");
@@ -20,17 +19,10 @@ const { Content } = await entry.render();
 const project = entry.data;
 ---
 
-<BaseLayout
+<ArticleLayout
 	title={project.title}
+	description={project.description}
 	image={project.image}
 >
-	<article class="space-y-5">
-		<PageHeading transitionName={project.title}>
-			{project.title}
-		</PageHeading>
-
-		<div class="prose prose-lg max-w-none prose-img:mx-auto prose-hr:my-5">
-			<Content />
-		</div>
-	</article>
-</BaseLayout>
+	<Content />
+</ArticleLayout>
