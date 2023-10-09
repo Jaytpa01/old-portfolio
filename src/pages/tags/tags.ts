@@ -7,7 +7,7 @@ export async function getAllTags(): Promise<string[]> {
 	const projectTags = projects.map((p) => p.data.tags || []).flat();
 	const postTags = posts.map((p) => p.data.tags || []).flat();
 
-	const tags = [...new Set(projectTags), ...new Set(postTags)]
+	const tags = [...new Set([...projectTags, ...postTags])]
 		.filter((t) => !!t) // filter out falsy tags
 		.sort();
 
