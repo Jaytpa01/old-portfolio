@@ -1,0 +1,58 @@
+---
+interface Props {
+	title: string;
+	publishDate: Date;
+	description: string;
+	to: string;
+}
+
+const { title, publishDate, description, to } = Astro.props;
+---
+
+<div class="space-y-1">
+	<h2
+		class="max-w-max text-2xl font-bold text-primary decoration-dashed hover:underline"
+		transition:name={title}
+	>
+		<a href={to}>
+			{title}
+		</a>
+	</h2>
+
+	<div class="space-y-2">
+		<div class="flex space-x-1">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="icon icon-tabler icon-tabler-calendar-event"
+				height="24"
+				viewBox="0 0 24 24"
+				stroke-width="2"
+				stroke="currentColor"
+				fill="none"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path
+					stroke="none"
+					d="M0 0h24v24H0z"
+					fill="none"
+				></path>
+				<path
+					d="M4 5m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"
+				></path>
+				<path d="M16 3l0 4"></path>
+				<path d="M8 3l0 4"></path>
+				<path d="M4 11l16 0"></path>
+				<path d="M8 15h2v2h-2z"></path>
+			</svg>
+			<time class="italic">
+				{
+					new Intl.DateTimeFormat("en-AU", { dateStyle: "full" }).format(
+						publishDate,
+					)
+				}
+			</time>
+		</div>
+		<p class="text-lg">{description}</p>
+	</div>
+</div>
