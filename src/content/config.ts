@@ -29,4 +29,4 @@ export const collections = {
 	blog,
 };
 
-export const PAGE_SIZE = 2;
+export const PAGE_SIZE = 5;
