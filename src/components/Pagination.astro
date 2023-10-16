@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { page } = Astro.props;
-const { currentPage, url } = page;
+const { currentPage, url, size } = page;
 
 // pull the next and current urls
 const { next, prev } = url;
@@ -40,7 +40,7 @@ const { next, prev } = url;
 				Previous
 			</a>
 			<button class="btn join-item no-animation dark:bg-neutral">
-				Page {currentPage}
+				Page {currentPage} / {size}
 			</button>
 			<a
 				href={next}

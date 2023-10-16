@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getAllTags } from "./tags";
 import PageHeading from "@components/PageHeading.astro";
+import Tag from "@components/Tag.astro";
 
 const tags = await getAllTags();
 ---
@@ -11,18 +12,7 @@ const tags = await getAllTags();
 		<PageHeading>Tags</PageHeading>
 		<h2 class="text-lg italic">All the tags used in my posts and projects!</h2>
 		<div>
-			{
-				tags.map((tag) => (
-					<span class="mb-3 mr-3 inline-block border-b-2 border-dashed text-2xl">
-						<a
-							href={`/tags/${tag}`}
-							transition:name={tag}
-						>
-							#{tag}
-						</a>
-					</span>
-				))
-			}
+			{tags.map((tag) => <Tag {tag} />)}
 		</div>
 	</section>
 </BaseLayout>
