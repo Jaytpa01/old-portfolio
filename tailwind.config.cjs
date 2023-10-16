@@ -6,11 +6,6 @@ module.exports = {
 	darkMode: "class",
 	theme: {
 		extend: {
-			colors: {
-				slattery_orange: {
-					100: "#E7773A",
-				},
-			},
 			fontFamily: {
 				sans: ["Inter", ...defaultTheme.fontFamily.sans],
 			},
