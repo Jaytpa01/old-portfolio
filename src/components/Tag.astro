@@ -1,0 +1,18 @@
+---
+interface Props {
+	tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<span
+	class="mb-3 mr-3 inline-block border-b-2 border-dashed border-primary text-xl font-semibold text-primary hover:scale-105"
+>
+	<a
+		href={`/tags/${tag}`}
+		transition:name={tag}
+	>
+		#{tag}
+	</a>
+</span>
