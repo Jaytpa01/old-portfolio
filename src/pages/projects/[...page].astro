@@ -6,9 +6,10 @@ import Card from "@components/Card.astro";
 import Pagination from "@components/Pagination.astro";
 import { PAGE_SIZE } from "@content/config";
 import PageHeading from "@components/PageHeading.astro";
+import { filterDraftArticles } from "src/filter";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-	const projects = await getCollection("project");
+	const projects = await getCollection("project", filterDraftArticles);
 	return paginate(projects, { pageSize: PAGE_SIZE });
 }
 

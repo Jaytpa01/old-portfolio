@@ -17,7 +17,7 @@ const { title, content, to, image = "" } = Astro.props;
 >
 	{
 		image && (
-			<figure class="border-b-2 border-gray-200 border-opacity-70 dark:border-neutral-700 lg:border-b-0 lg:border-r-2">
+			<figure class="min-w-fit border-b-2 border-gray-200 border-opacity-70 dark:border-neutral-700 lg:border-b-0 lg:border-r-2">
 				<Image
 					src={image}
 					alt="Test Image"

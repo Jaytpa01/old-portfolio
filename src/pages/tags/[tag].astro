@@ -9,11 +9,12 @@ import { getCollection } from "astro:content";
 import PageHeading from "@components/PageHeading.astro";
 import Card from "@components/Card.astro";
 import BlogCard from "@components/BlogCard.astro";
+import { filterDraftArticles } from "src/filter";
 
 export async function getStaticPaths() {
 	const tags = await getAllTags();
-	const projects = await getCollection("project");
-	const posts = await getCollection("blog");
+	const projects = await getCollection("project", filterDraftArticles);
+	const posts = await getCollection("blog", filterDraftArticles);
 
 	return tags.map((tag) => ({
 		params: { tag },

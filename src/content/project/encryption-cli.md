@@ -6,6 +6,7 @@ publishDate: Sep 30 2023
 tags:
     - Go
     - Cobra
+draft: true
 ---
 ### EEEE
 

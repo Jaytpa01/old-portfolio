@@ -1,4 +1,3 @@
-import type { ImageMetadata } from "astro";
 import { z, defineCollection } from "astro:content";
 
 interface ArticleSchemaParams {
@@ -12,6 +11,7 @@ const articleSchema = ({ image }: ArticleSchemaParams) =>
 		publishDate: z.coerce.date().default(new Date()),
 		tags: z.array(z.string().toLowerCase()).optional(),
 		image: image().optional(),
+		draft: z.boolean().default(false),
 	});
 
 const project = defineCollection({
