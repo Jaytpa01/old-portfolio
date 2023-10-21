@@ -1,5 +1,5 @@
 ---
-title: "Sorting TailwindCSS Classes In an Astro Project with VS Code(wip)"
+title: "Sorting TailwindCSS Classes In an Astro Project with VS Code"
 description: How I got the TailwindCSS Prettier Plugin setup to work with my Astro project in VS Code.
 publishDate: Oct 16 2023
 slug: tailwind-auto-sorting
