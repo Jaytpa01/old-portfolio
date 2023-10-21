@@ -2,8 +2,9 @@
 import Card from "@components/Card.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { filterDraftArticles } from "src/filter";
 
-const projects = await getCollection("project");
+const projects = await getCollection("project", filterDraftArticles);
 projects.sort(
 	(a, b) => a.data.publishDate.getTime() - b.data.publishDate.getTime(),
 );
