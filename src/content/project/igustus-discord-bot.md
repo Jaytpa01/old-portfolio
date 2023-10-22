@@ -1,7 +1,7 @@
 ---
 title: Discord Bot with OpenAI Text Generation
 slug: igustus
-description: This post goes into detail about how I built a Discord bot usign OpenAI's GPT-3 for text generation. From the initial inspiration to the technical details, let me tell you how I got AI to tell me I fucked up. I go into detail about data extraction, training AI models, user interaction, and the end result of this project.
+description: This post goes into detail about how I built a Discord bot using OpenAI's GPT-3 for text generation. From the initial inspiration to the technical details, let me tell you how I got AI to tell me I fucked up. I go into detail about data extraction, training AI models, user interaction, and the end result of this project.
 publishDate: Aug 28 2023
 image: ../../assets/images/igustus/igustus.png
 tags: 
