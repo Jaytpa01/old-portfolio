@@ -1,0 +1,20 @@
+{
+    "name": "Jay Parry's Developer Portfolio",
+    "short_name": "Jay's Portfolio",
+    "description": "Jay's developer portfolio. A showcase of some of my projects, my resume, and a small blog.",
+    "icons": [
+       {
+          "src": "/android-chrome-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+       },
+       {
+        "src": "/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+        }
+    ],
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF",
+    "display": "standalone"
+ }
