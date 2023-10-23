@@ -9,7 +9,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"prepare": "husky install",
-		"lint.commit": "commitlint --edit"
+		"commitlint": "commitlint --edit"
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.0.2",
