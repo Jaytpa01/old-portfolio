@@ -4,4 +4,6 @@ export const TAGS = {
 	KUBERNETES: "Kubernetes",
 	NODE: "NodeJS",
 	REACT: "React",
+	SALESFORCE: "Salesforce",
+	HEROKU: "Heroku",
 };
