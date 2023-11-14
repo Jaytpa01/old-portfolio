@@ -150,7 +150,9 @@ const {
 			function sendNotification() {
 				fetch("https://ntfy.jayparry.dev/portfolio", {
 					method: "POST",
-					headers: {},
+					headers: {
+						tag: "eyes",
+					},
 					body: "Hey, someone just visited your portfolio!",
 				});
 			}
