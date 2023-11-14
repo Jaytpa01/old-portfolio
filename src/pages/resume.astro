@@ -4,7 +4,7 @@ import TimelineElement from "@components/Timeline/TimelineElement.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { TAGS } from "../constants";
 
-const { GO, NODE, REACT, GCP, KUBERNETES } = TAGS;
+const { GO, NODE, REACT, GCP, KUBERNETES, SALESFORCE, HEROKU } = TAGS;
 
 interface Job {
 	title: string;
@@ -20,8 +20,8 @@ const jobs: Job[] = [
 		employer: "welcome. Digital Agency",
 		date: "June 2023 - Present",
 		description:
-			"I primarily concentrated on development for a major online auction house client, collaborating directly with the client's Head of Technology to gather requirements, address issues, and introduce new features. I utilized Node.js and React to design and implement solutions and to successfully integrate with various third-party systems, such as Salesforce, Westpac PayWay, and DoxAI to enable and improve functionality.",
-		tags: [NODE, REACT],
+			"I primarily focused on development for a client running an online auction house, collaborating with their Head of Technology to gather requirements, address issues, and introduce new features. We used Node.js and React to build the application, and integrated with various third-party systems such as Salesforce, Westpac PayWay, and DoxAI.",
+		tags: [NODE, REACT, SALESFORCE, HEROKU],
 	},
 	{
 		title: "Systems Engineer",
@@ -34,7 +34,10 @@ const jobs: Job[] = [
 ];
 ---
 
-<BaseLayout title="Resume | Jay Parry" description="My work experience.">
+<BaseLayout
+	title="Resume | Jay Parry"
+	description="My work experience."
+>
 	<div class="mt-3">
 		<TimelineContainer>
 			{
