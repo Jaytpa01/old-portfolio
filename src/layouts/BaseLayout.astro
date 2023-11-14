@@ -137,6 +137,37 @@ const {
 		}
 
 		<title>{title}</title>
+
+		<script>
+			function getCookie(name: string) {
+				const cookies = document.cookie.split("; ");
+				const cookie = cookies.find((c) => c.includes(name));
+
+				const value = cookie?.slice(cookie.indexOf("=") + 1);
+				return value;
+			}
+
+			function sendNotification() {
+				fetch("https://ntfy.jayparry.dev/portfolio", {
+					method: "POST",
+					headers: {},
+					body: "Hey, someone just visited your portfolio!",
+				});
+			}
+
+			function CheckNewVisitor() {
+				const visited = getCookie("visited");
+
+				if (!visited) {
+					sendNotification();
+				}
+
+				// set cookeie for 2 hours
+				document.cookie = `visited=true; Max-Age=${2 * 60 * 60}`;
+			}
+
+			window.onload = CheckNewVisitor;
+		</script>
 	</head>
 	<body>
 		<main class="mx-auto flex min-h-screen flex-col">
