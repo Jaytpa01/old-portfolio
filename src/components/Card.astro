@@ -29,18 +29,20 @@ const { title, content, to, image = "" } = Astro.props;
 	}
 	<div class="card-body">
 		<h2
-			class="card-title"
+			class="card-title text-2xl font-semibold"
 			transition:name={title}
 		>
 			{title}
 		</h2>
-		<p>{content}</p>
+		<p class="font-medium">{content}</p>
 		<div class="card-actions w-full">
 			<a
-				class="btn btn-primary no-animation w-full text-white active:bg-accent"
+				class="btn btn-primary btn-active no-animation w-full font-medium text-black hover:btn-accent hover:text-black"
 				href={to}
-				>Read More</a
+				aria-label="Read More"
 			>
+				Read More
+			</a>
 		</div>
 	</div>
 </div>
