@@ -3,6 +3,7 @@ import TimelineContainer from "@components/Timeline/TimelineContainer.astro";
 import TimelineElement from "@components/Timeline/TimelineElement.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { TAGS } from "../constants";
+import Download from "@components/icons/Download.astro";
 
 const { GO, NODE, REACT, GCP, KUBERNETES, SALESFORCE, HEROKU } = TAGS;
 
@@ -56,5 +57,16 @@ const jobs: Job[] = [
 				})
 			}
 		</TimelineContainer>
+	</div>
+
+	<div class="flex justify-center py-4">
+		<a
+			href="/resume.pdf"
+			download
+			class="btn btn-accent text-white"
+		>
+			<Download size="24" />
+			 Download Resume
+		</a>
 	</div>
 </BaseLayout>
