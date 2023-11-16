@@ -1,4 +1,53 @@
-<li><a href="/projects">Projects</a></li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/tags">Tags</a></li>
-<li><a href="/resume">Resume</a></li>
+---
+interface NavItem {
+	href: string;
+	text: string;
+}
+const navItems: NavItem[] = [
+	{
+		href: "/",
+		text: "Home",
+	},
+	{
+		href: "/projects",
+		text: "Projects",
+	},
+	{
+		href: "/blog",
+		text: "Blog",
+	},
+	{
+		href: "/tags",
+		text: "Tags",
+	},
+	{
+		href: "/resume",
+		text: "Resume",
+	},
+];
+
+const { pathname } = Astro.url;
+const basePathItem = pathname.split("/")[1] || "";
+
+const getClass = (href: string): string => {
+	const strippedHref = href.replaceAll("/", "");
+	if (strippedHref === basePathItem) {
+		return "text-primary underline";
+	}
+
+	return "";
+};
+---
+
+{
+	navItems.map(({ href, text }) => (
+		<li>
+			<a
+				{href}
+				class={getClass(href)}
+			>
+				{text}
+			</a>
+		</li>
+	))
+}
