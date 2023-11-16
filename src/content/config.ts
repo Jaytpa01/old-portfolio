@@ -4,6 +4,8 @@ interface ArticleSchemaParams {
 	image: () => any;
 }
 
+const validStatuses = ["draft", "preview", "published"] as const;
+
 const articleSchema = ({ image }: ArticleSchemaParams) =>
 	z.object({
 		title: z.string(),
@@ -11,7 +13,7 @@ const articleSchema = ({ image }: ArticleSchemaParams) =>
 		publishDate: z.coerce.date().default(new Date()),
 		tags: z.array(z.string().toLowerCase()).optional(),
 		image: image().optional(),
-		draft: z.boolean().default(false),
+		status: z.enum(validStatuses),
 	});
 
 const project = defineCollection({

@@ -7,13 +7,16 @@ interface Props {
 	content?: string;
 	to: string;
 	image?: ImageMetadata;
+	articleStatus: string;
 }
 
-const { title, content, to, image = "" } = Astro.props;
+const { title, content, to, image = "", articleStatus } = Astro.props;
+
+const canReadMore = articleStatus === "published";
 ---
 
 <div
-	class="card w-full border-2 border-gray-200 border-opacity-70 bg-base-100 lg:card-side dark:border-neutral-700"
+	class="card card-compact w-full border-2 border-gray-200 border-opacity-70 bg-base-100 lg:card-side dark:border-neutral-700"
 >
 	{
 		image && (
@@ -35,14 +38,18 @@ const { title, content, to, image = "" } = Astro.props;
 			{title}
 		</h2>
 		<p class="font-medium">{content}</p>
-		<div class="card-actions w-full">
-			<a
-				class="btn btn-accent no-animation w-full font-medium"
-				href={to}
-				aria-label="Read More"
-			>
-				Read More
-			</a>
-		</div>
+		{
+			canReadMore && (
+				<div class="card-actions w-full">
+					<a
+						class="btn btn-accent no-animation w-full font-medium"
+						href={to}
+						aria-label="Read More"
+					>
+						Read More
+					</a>
+				</div>
+			)
+		}
 	</div>
 </div>

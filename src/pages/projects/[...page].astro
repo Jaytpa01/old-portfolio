@@ -2,7 +2,7 @@
 import type { GetStaticPathsOptions, Page } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import Card from "@components/Card.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import Pagination from "@components/Pagination.astro";
 import { PAGE_SIZE } from "@content/config";
 import PageHeading from "@components/PageHeading.astro";
@@ -29,11 +29,12 @@ const { page } = Astro.props;
 		<div class="space-y-12">
 			{
 				page.data.map((p) => (
-					<Card
+					<ProjectCard
 						title={p.data.title}
 						to={`/projects/${p.slug}`}
 						content={p.data.description}
 						image={p.data.image}
+						articleStatus={p.data.status}
 					/>
 				))
 			}

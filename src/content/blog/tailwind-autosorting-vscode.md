@@ -8,6 +8,7 @@ tags:
     - vscode
     - tailwindcss
     - prettier
+status: published
 ---
 
 You've probably heard Phil Karlton's quote before (or a variation of it at least):
