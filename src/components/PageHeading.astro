@@ -4,11 +4,24 @@ interface Props {
 }
 
 const { transitionName } = Astro.props;
+
+/**
+ * Previousy, we had "transition:name={transitionName}" as an atribute on the h1 tag directly.
+ * If transitionName was undefined, there was undesirable behaviour' namely the projects and blog headings flickering.
+ *
+ * This avoids that by conditionally adding the attribute to the "optionalProps" object, and spreading it across the h1 element.
+ */
+// NOTE: This could probably be implemented cleaner, but this works for now.
+// TODO: assess and potentially refactor
+const optionalProps: any = {};
+if (transitionName) {
+	optionalProps["transition:name"] = transitionName;
+}
 ---
 
 <h1
 	class="text-4xl font-extrabold"
-	transition:name={transitionName}
+	{...optionalProps}
 >
 	<slot />
 </h1>
