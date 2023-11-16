@@ -1,5 +1,5 @@
 ---
-import Card from "@components/Card.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { filterDraftArticles } from "src/filter";
@@ -57,11 +57,12 @@ const mostRecentProjects = projects.slice(0, 2);
 			<div class="space-y-12">
 				{
 					mostRecentProjects.map((p) => (
-						<Card
+						<ProjectCard
 							title={p.data.title}
 							to={`/projects/${p.slug}`}
 							content={p.data.description}
 							image={p.data.image}
+							articleStatus={p.data.status}
 						/>
 					))
 				}

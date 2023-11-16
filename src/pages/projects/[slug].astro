@@ -1,9 +1,10 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import ArticleLayout from "@layouts/ArticleLayout.astro";
+import { filterDraftArticles } from "src/filter";
 
 export async function getStaticPaths() {
-	const postEntries = await getCollection("project");
+	const postEntries = await getCollection("project", filterDraftArticles);
 	return postEntries.map((entry: CollectionEntry<"project">) => ({
 		params: { slug: entry.slug },
 		props: { entry },
